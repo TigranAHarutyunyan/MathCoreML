@@ -1,0 +1,193 @@
+# EngineeredML
+
+Lightweight utilities and example models for small-scale ML experiments.
+
+## Overview
+
+EngineeredML contains a small collection of utilities and model templates aimed
+at rapid prototyping and teaching examples. Primary components:
+
+- `src/MathCoreML/utils` — data utilities: `CSVStore`, `CleanData`, evaluation helpers.
+- `src/MathCoreML/Models` — example model implementations (linear and logistic).
+- Top-level helpers and example scripts for running small demos and notebooks.
+
+## Highlights
+
+- Easy CSV loading and quick visualizations with `CSVStore`.
+- Simple IQR-based outlier detection in `CleanData`.
+- Small, clear example implementations of `linearRegression` and `logisticRegression`.
+
+## Installation
+
+Create and activate a virtual environment, then install dependencies:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
+
+If you prefer editable install for development:
+
+```bash
+pip install -e .
+```
+
+## Quick Start
+
+Run the small checker notebook or use the `Heart_Disease` helper from the repo root.
+
+Example (Python script or REPL):
+
+```python
+from src.MathCoreML.utils.CSVStore import CSVStore
+from src.MathCoreML.utils.CleanData import CleanData
+
+store = CSVStore('Heart_Disease_Prediction.csv')
+print('Rows:', len(store))
+print('Max Age:', store.max_of('Age'))
+
+# Run quick summary
+store.quick_summary()
+```
+
+Or use the top-level helper `Heart_Disease.py`:
+
+````python
+from Heart_Disease import Heart_Disease
+
+EngineeredML
+=============
+
+Lightweight utilities and example models for small-scale ML experiments.
+
+Overview
+--------
+EngineeredML contains a small collection of utilities and model templates aimed
+at rapid prototyping and teaching examples. Primary components:
+
+- `src/MathCoreML/utils` — data utilities: `CSVStore`, `CleanData`, evaluation helpers.
+- `src/MathCoreML/Models` — example model implementations (linear and logistic).
+
+Highlights
+----------
+- Easy CSV loading and quick visualizations with `CSVStore`.
+- Simple IQR-based outlier detection in `CleanData`.
+- Small, clear example implementations of `linearRegression` and `logisticRegression`.
+
+Installation
+------------
+Create and activate a virtual environment, then install dependencies:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install pandas numpy scikit-learn matplotlib seaborn
+````
+
+If you prefer editable install for development:
+
+```bash
+pip install -e .
+```
+
+## Quick Start
+
+Use the `CSVStore` utility and example models from the `src` package. Provide
+your own CSV files when running the library (the repository no longer includes
+example datasets or top-level demo helpers).
+
+Example (Python script or REPL):
+
+```python
+from src.MathCoreML.utils.CSVStore import CSVStore
+from src.MathCoreML.utils.CleanData import CleanData
+
+# Provide your own CSV file path
+store = CSVStore('/absolute/path/to/your_dataset.csv')
+print('Rows:', len(store))
+print('Max of Age (if present):', store.max_of('Age'))
+store.quick_summary()
+```
+
+## Notes
+
+- When importing modules from the `src` package in scripts or notebooks, ensure
+  the repository root is on `sys.path` or use absolute paths to data files.
+
+## Project Layout
+
+```
+EngineeredML/
+├─ src/MathCoreML/
+│  ├─ utils/
+│  │  ├─ CleanData.py        # IQR outlier detection and helpers
+│  │  ├─ CSVStore.py         # CSV loader, basic stats, plotting, regression helpers
+│  ├─ Models/
+│     ├─ linearRegression.py
+│     └─ logisticRegression.py
+├─ Checker.ipynb             # example notebook (may reference local datasets)
+```
+
+## Contributing
+
+PRs and issues are welcome. Please:
+
+1. Fork the repo and create a feature branch.
+2. Add tests or a minimal example demonstrating the change.
+3. Keep changes focused and add docstrings for new functions.
+
+## License
+
+Add your preferred license here (e.g., MIT, Apache-2.0).
+
+## Next Steps
+
+- Add a `requirements.txt` or include dependencies in `pyproject.toml`.
+- Add unit tests for critical utilities in `src/MathCoreML/utils`.
+- Consider publishing to PyPI if you want easy installation via `pip`.
+
+## What is this library?
+
+`EngineeredML` is a compact Python library of small, well-documented utilities and example model implementations designed for learning, quick experiments, and lightweight data-processing pipelines. It favors clarity over complexity so newcomers and engineers can prototype ML workflows quickly.
+
+## What problem does it solve?
+
+- Simplifies loading and exploring CSV datasets with `CSVStore` (wrapping pandas + numpy conveniences).
+- Provides basic visualization helpers (histograms, scatter plots, correlation heatmaps) to quickly inspect data.
+- Implements simple data cleaning utilities such as IQR-based outlier detection via `CleanData`.
+- Includes minimal example models (`linearRegression`, `logisticRegression`) to demonstrate training and evaluation patterns without heavy frameworks.
+
+## Project structure
+
+Top-level layout and the main modules you'll work with:
+
+```
+EngineeredML/
+├─ src/MathCoreML/
+│  ├─ utils/
+│  │  ├─ CleanData.py        # IQR outlier detection and helpers
+│  │  ├─ CSVStore.py         # CSV loader, basic stats, plotting, regression helpers
+│  ├─ Models/
+│     ├─ linearRegression.py
+		 └─ logisticRegression.py
+```
+
+## Examples
+
+Load a dataset and inspect it with `CSVStore` (supply your own CSV file):
+
+```python
+from src.MathCoreML.utils.CSVStore import CSVStore
+
+store = CSVStore('/absolute/path/to/your_dataset.csv')
+print('Rows:', len(store))
+print('Max Age (if present):', store.max_of('Age'))
+store.quick_summary()
+```
+
+If you'd like, I can now:
+
+- add a `requirements.txt` with pinned dependency versions,
+- add short usage examples inside `src/MathCoreML/Models`, or
+- create unit tests for `CSVStore` and `CleanData`.

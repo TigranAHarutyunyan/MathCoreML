@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "MathCoreML"
+version = "0.1.0"
+description = "Mathematical Implementation of ML algorithms from scratch"
+license = {text = "MIT"}
+dependencies = [
+    "numpy",
+    "pandas",
+    "matplotlib",
+    "scikit-learn"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
