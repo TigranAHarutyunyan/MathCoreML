@@ -3,7 +3,7 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "MathCoreML"
+name = "mathcoreml"
 version = "0.1.0"
 description = "Mathematical Implementation of ML algorithms from scratch"
 license = {text = "MIT"}

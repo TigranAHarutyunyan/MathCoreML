@@ -11,11 +11,11 @@ import seaborn as sns
 from sklearn import linear_model
 from pandas.api.types import is_numeric_dtype
 from mpl_toolkits.mplot3d import Axes3D
-class CSVStore:
+class csvstore:
     """Materializes a CSV file as a pandas DataFrame and numpy array."""
     def __init__(self, csv_path: str | Path):
         """
-        Initialize CSVStore with a CSV file path.
+        Initialize csvstore with a CSV file path.
         
         Args:
             csv_path: Path to the CSV file (str or Path object)

@@ -2,10 +2,10 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model  import LinearRegression
 import matplotlib.pyplot as plt
 import numpy as np
-import MathCoreML.utils.CleanData as CSVStore
-from MathCoreML.Models.template_models.modelImplementationTemplate import Models 
-from MathCoreML.utils.CleanData import CleanData
-from MathCoreML.utils.ModelEvaluation import RegressionEvaluator
+import mathcoreml.utils.CleanData as CSVStore
+from mathcoreml.Models.template_models.modelImplementationTemplate import Models 
+from mathcoreml.utils.CleanData import CleanData
+from mathcoreml.utils.modelevalutaor import RegressionEvaluator
 class linear_regression(Models):
     def __init__(self,object:CSVStore):
         self.model = LinearRegression()

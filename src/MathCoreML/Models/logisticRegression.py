@@ -2,15 +2,15 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import numpy as np
-import MathCoreML.utils.CSVStore as CSVStore
-from MathCoreML.Models.template_models.modelImplementationTemplate import  Models
+import mathcoreml.utils.csvstore as csvstore
+from mathcoreml.Models.template_models.modelImplementationTemplate import  Models
 class logistic_regression(Models):
-    def __init__(self,dataset_object:CSVStore):
+    def __init__(self,dataset_object:csvstore):
         """
         Initialize logistic regression model with a dataset.
         
         Args:
-            dataset_object: CSVStore object containing the dataset
+            dataset_object: csvstore object containing the dataset
         
         Returns:
             None
