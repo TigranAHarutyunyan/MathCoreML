@@ -68,7 +68,7 @@ store.quick_summary()
 ```
 
 ## Package Structure
-՝``text
+```text
 MathCoreML/
 ├── src/
 │   └── mathcoreml/
@@ -80,7 +80,7 @@ MathCoreML/
 │           ├── cleandata.py
 │           └── modelevaluator.py
 └── pyproject.toml
-
+```
 ## Notes
 
 ### Designed for clarity and learning, not as a replacement for full ML frameworks.
