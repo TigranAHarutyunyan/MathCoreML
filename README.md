@@ -70,15 +70,16 @@ store.quick_summary()
 ## Package Structure
 
 MathCoreML/
-├─ src/
-│ └─ MathCoreML/
-│ ├─ utils/
-│ │ ├─ CSVStore.py # CSV loading, stats, plots
-│ │ ├─ CleanData.py # IQR-based outlier detection
-│ │ └─ ModelEvaluation.py
-│ └─ Models/
-│ ├─ linearRegression.py
-│ └─ logisticRegression.py
+├── src/
+│   └── mathcoreml/
+│       ├── Models/
+│       │   ├── linearRegression.py
+│       │   └── logisticRegression.py
+│       └── utils/
+│           ├── csvstore.py
+│           ├── cleandata.py
+│           └── modelevaluator.py
+└── pyproject.toml
 
 ## Notes
 
