@@ -1,4 +1,4 @@
-class CleanData:
+class cleandata:
     def __init__(self, x_q1, x_q3, y_q1, y_q3):
         """
         Initialize CleanData with quartile values for outlier detection.

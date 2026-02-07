@@ -2,12 +2,12 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model  import LinearRegression
 import matplotlib.pyplot as plt
 import numpy as np
-import mathcoreml.utils.CleanData as CSVStore
+import mathcoreml.utils.csvstore as csvstore
 from mathcoreml.Models.template_models.modelImplementationTemplate import Models 
-from mathcoreml.utils.CleanData import CleanData
+from mathcoreml.utils.cleandata import cleandata
 from mathcoreml.utils.modelevalutaor import RegressionEvaluator
 class linear_regression(Models):
-    def __init__(self,object:CSVStore):
+    def __init__(self,object:csvstore):
         self.model = LinearRegression()
         self._df = object.frame
         self.is_trained = False
@@ -26,20 +26,22 @@ class linear_regression(Models):
         if self.is_preaper:
             print("Your Data is preapered")
             return 
-        self.__clean_data = CleanData(
-            self._df[x_column].quantile(0.25),
-            self._df[x_column].quantile(0.75),
-            self._df[y_column].quantile(0.25),
-            self._df[y_column].quantile(0.75))
-        self._df[x_column] = self._df[x_column].apply(
-            lambda x: x if not self.__clean_data.x_is_outlier(x) else np.nan )
-        self._df = self._df.dropna(subset=[x_column])
-        self._df[y_column] = self._df[y_column].apply(
-            lambda y: y if not  self.__clean_data.y_is_outlier(y) else np.nan
-        )
-        self._df = self._df.dropna(subset=[y_column])
+        q1_x = self._df[x_column].quantile(0.25)
+        q3_x = self._df[x_column].quantile(0.75)
+        q1_y = self._df[y_column].quantile(0.25)
+        q3_y = self._df[y_column].quantile(0.75)
+
+        self.__clean_data = cleandata(q1_x, q3_x, q1_y, q3_y)
+        print(self.__clean_data.x_lower_bound,self.__clean_data.x_upper_bound,self.__clean_data.y_lower_bound,self.__clean_data.y_upper_bound)
+        mask_x = self._df[x_column].apply(lambda x: not self.__clean_data.x_is_outlier(x))
+        mask_y = self._df[y_column].apply(lambda y: not self.__clean_data.y_is_outlier(y))
+        self._df = self._df[mask_x & mask_y].copy()
+        print(self._df.head(5))
+        self._df = self._df.reset_index(drop=True)
         self.X = self._df[[x_column]]
         self.Y = self._df[y_column]
+
+        print(self.Y.iloc[0],"------------")
         self.is_preaper = True
     def train_model(self):
         """
@@ -58,7 +60,6 @@ class linear_regression(Models):
         self.model.fit(X_train,Y_train)
         self.is_trained = True
         self.y_hat = self.model.predict(self.X)
-        print(self.y_hat)
         return self.model.score(X_test,Y_test)
     def predict_single(self, index):
         """

@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from MathCoreML.utils.CSVStore import CSVStore
+from mathcoreml.utils.csvstore import csvstore
 
 
-class Heart_Disease(CSVStore):
+class Heart_Disease(csvstore):
     def __init__(self,CsvPath: str):
         super().__init__(CsvPath)
