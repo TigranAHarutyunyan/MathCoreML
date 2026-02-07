@@ -206,7 +206,7 @@ class csvstore:
         Returns:
             pd.Series: Mean values grouped by x_column
         """
-        return self._frame.groupby(x_column, observed=True)[y_column].mean()
+        return self._frame.groupby(x_column,observed=True)[y_column].mean()
     def group_by(self, column: str) -> pd.Series:
         """
         Group a column into bins using Sturges' formula.
@@ -423,9 +423,6 @@ class csvstore:
                     linewidths=0.5)
         plt.title("All column correlations")
         plt.tight_layout()
-        
-
-        
 
     def __iter__(self) -> Iterator[pd.Series]:
         """
