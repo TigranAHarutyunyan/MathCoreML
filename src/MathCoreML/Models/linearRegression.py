@@ -37,10 +37,11 @@ class linear_regression(Models):
         mask_y = self._df[y_column].apply(lambda y: not self.__clean_data.y_is_outlier(y))
         self._df = self._df[mask_x & mask_y].copy()
         print(self._df.head(5))
+        self._df = self._df.dropna(subset=[x_column, y_column])
         self._df = self._df.reset_index(drop=True)
         self.X = self._df[[x_column]]
         self.Y = self._df[y_column]
-
+        print(len(self.X), len(self.Y))
         print(self.Y.iloc[0],"------------")
         self.is_preaper = True
     def train_model(self):
