@@ -31,7 +31,6 @@ class linear_regression(Models):
         q3_y = self._df[y_column].quantile(0.75)
 
         self.__clean_data = cleandata(q1_x, q3_x, q1_y, q3_y)
-        print(self.__clean_data.x_lower_bound,self.__clean_data.x_upper_bound,self.__clean_data.y_lower_bound,self.__clean_data.y_upper_bound)
         mask_x = self._df[x_column].apply(lambda x: not self.__clean_data.x_is_outlier(x))
         mask_y = self._df[y_column].apply(lambda y: not self.__clean_data.y_is_outlier(y))
         self._df = self._df[mask_x & mask_y].copy()
