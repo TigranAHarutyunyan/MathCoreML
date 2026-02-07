@@ -1,3 +1,6 @@
+![PyPI Version](https://img.shields.io/pypi/v/mathcoreml)
+![License](https://img.shields.io/github/license/TigranAHarutyunyan/MathCoreML)
+
 # MathCoreML
 
 Lightweight utilities and example models for small-scale machine learning experiments.
@@ -68,6 +71,7 @@ store.quick_summary()
 ```
 
 ## Package Structure
+
 ```text
 MathCoreML/
 ├── src/
@@ -81,6 +85,7 @@ MathCoreML/
 │           └── modelevaluator.py
 └── pyproject.toml
 ```
+
 ## Notes
 
 ### Designed for clarity and learning, not as a replacement for full ML frameworks.

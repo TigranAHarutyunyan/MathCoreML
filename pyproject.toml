@@ -5,6 +5,8 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "mathcoreml"
 version = "0.1.0"
+readme = "README.md"
+authors = [{name = "Tigran", email = "tigran.harutunyan.02@gmail.com"}]
 description = "Mathematical Implementation of ML algorithms from scratch"
 license = {text = "MIT"}
 dependencies = [
