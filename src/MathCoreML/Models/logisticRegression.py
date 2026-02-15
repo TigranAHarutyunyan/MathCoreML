@@ -66,7 +66,6 @@ class logistic_regression(Models):
             print("Invalid Index")
             return 0
         row_df = self.X.iloc[[index]]
-        print(row_df)
         return self.model.predict_proba(row_df)[0][1]    
     def plot_my_model_sigmoid(self):
         """
